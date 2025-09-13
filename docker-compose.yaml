@@ -1,0 +1,28 @@
+services:
+  backend-service-1:
+    image: hashicorp/http-echo
+    container_name: backend1
+    command: ["-text=Hello from backend service 1"]
+    expose:
+      - "5678"
+
+  backend-service-2:
+    image: hashicorp/http-echo
+    container_name: backend2
+    command: ["-text=Hello from backend service 2"]
+    expose:
+      - "5678"
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx-server
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - backend-service-1
+      - backend-service-2
