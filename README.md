@@ -1,16 +1,17 @@
 🌐 Nginx Server + Reverse Proxy + Load Balancer with HTTPS
 
 This project demonstrates how to set up Nginx as a static file server, reverse proxy, and load balancer with HTTPS redirect.
+There are 2 backend containers and 1 nginx container created using docker-compose file.
 
-📜 Nginx Features \
+Features: \
 Static file serving → from /frontend/index.html \
 Reverse proxy → /api/ requests are forwarded to backend services \
-Load balancing → Nginx alternates between backend1 and backend2 \
+Load balancing → Nginx alternates between backend1 and backend2 containers \
 HTTPS enabled → with self-signed certificate
 
 📂 Project Structure
 . \
-├── docker-compose.yml #to run docker containers \
+├── docker-compose.yml #to run nginx and backend containers \
 ├── nginx.conf #nginx configuration file \
 ├── frontend/ \
 │   └── index.html \
